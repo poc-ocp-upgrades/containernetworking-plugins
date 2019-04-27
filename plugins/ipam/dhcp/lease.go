@@ -41,6 +41,8 @@ func AcquireLease(clientID, netns, ifName string) (*DHCPLease, error) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	errCh := make(chan error, 1)
 	l := &DHCPLease{clientID: clientID, stop: make(chan struct{})}
 	log.Printf("%v: acquiring lease", clientID)
@@ -72,12 +74,16 @@ func (l *DHCPLease) Stop() {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	if atomic.CompareAndSwapUint32(&l.stopping, 0, 1) {
 		close(l.stop)
 	}
 	l.wg.Wait()
 }
 func (l *DHCPLease) acquire() error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -114,6 +120,8 @@ func (l *DHCPLease) commit(ack *dhcp4.Packet) error {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	opts := ack.ParseOptions()
 	leaseTime, err := parseLeaseTime(opts)
 	if err != nil {
@@ -136,6 +144,8 @@ func (l *DHCPLease) commit(ack *dhcp4.Packet) error {
 	return nil
 }
 func (l *DHCPLease) maintain() {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -190,11 +200,15 @@ func (l *DHCPLease) downIface() {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	if err := netlink.LinkSetDown(l.link); err != nil {
 		log.Printf("%v: failed to bring %v interface DOWN: %v", l.clientID, l.link.Attrs().Name, err)
 	}
 }
 func (l *DHCPLease) renew() error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -226,6 +240,8 @@ func (l *DHCPLease) release() error {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	log.Printf("%v: releasing lease", l.clientID)
 	c, err := newDHCPClient(l.link)
 	if err != nil {
@@ -242,6 +258,8 @@ func (l *DHCPLease) IPNet() (*net.IPNet, error) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	mask := parseSubnetMask(l.opts)
 	if mask == nil {
 		return nil, fmt.Errorf("DHCP option Subnet Mask not found in DHCPACK")
@@ -253,9 +271,13 @@ func (l *DHCPLease) Gateway() net.IP {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return parseRouter(l.opts)
 }
 func (l *DHCPLease) Routes() []*types.Route {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -277,9 +299,13 @@ func jitter(span time.Duration) time.Duration {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return time.Duration(float64(span) * (2.0*rand.Float64() - 1.0))
 }
 func backoffRetry(f func() (*dhcp4.Packet, error)) (*dhcp4.Packet, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -299,6 +325,8 @@ func backoffRetry(f func() (*dhcp4.Packet, error)) (*dhcp4.Packet, error) {
 	return nil, errNoMoreTries
 }
 func newDHCPClient(link netlink.Link) (*dhcp4client.Client, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

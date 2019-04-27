@@ -47,9 +47,13 @@ func init() {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	runtime.LockOSThread()
 }
 func loadNetConf(bytes []byte) (*NetConf, string, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -61,6 +65,8 @@ func loadNetConf(bytes []byte) (*NetConf, string, error) {
 	return n, n.CNIVersion, nil
 }
 func calcGateways(result *current.Result, n *NetConf) (*gwInfo, *gwInfo, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -111,6 +117,8 @@ func ensureBridgeAddr(br *netlink.Bridge, family int, ipn *net.IPNet, forceAddre
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	addrs, err := netlink.AddrList(br, family)
 	if err != nil && err != syscall.ENOENT {
 		return fmt.Errorf("could not get list of IP addresses: %v", err)
@@ -144,6 +152,8 @@ func deleteBridgeAddr(br *netlink.Bridge, ipn *net.IPNet) error {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	addr := &netlink.Addr{IPNet: ipn, Label: ""}
 	if err := netlink.AddrDel(br, addr); err != nil {
 		return fmt.Errorf("could not remove IP address from %q: %v", br.Name, err)
@@ -151,6 +161,8 @@ func deleteBridgeAddr(br *netlink.Bridge, ipn *net.IPNet) error {
 	return nil
 }
 func bridgeByName(name string) (*netlink.Bridge, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -166,6 +178,8 @@ func bridgeByName(name string) (*netlink.Bridge, error) {
 	return br, nil
 }
 func ensureBridge(brName string, mtu int, promiscMode bool) (*netlink.Bridge, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -190,6 +204,8 @@ func ensureBridge(brName string, mtu int, promiscMode bool) (*netlink.Bridge, er
 	return br, nil
 }
 func setupVeth(netns ns.NetNS, br *netlink.Bridge, ifName string, mtu int, hairpinMode bool) (*current.Interface, *current.Interface, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -228,10 +244,14 @@ func calcGatewayIP(ipn *net.IPNet) net.IP {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	nid := ipn.IP.Mask(ipn.Mask)
 	return ip.NextIP(nid)
 }
 func setupBridge(n *NetConf) (*netlink.Bridge, *current.Interface, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -243,6 +263,8 @@ func setupBridge(n *NetConf) (*netlink.Bridge, *current.Interface, error) {
 	return br, &current.Interface{Name: br.Attrs().Name, Mac: br.Attrs().HardwareAddr.String()}, nil
 }
 func disableIPV6DAD(ifName string) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -259,12 +281,16 @@ func enableIPForward(family int) error {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	if family == netlink.FAMILY_V4 {
 		return ip.EnableIP4Forward()
 	}
 	return ip.EnableIP6Forward()
 }
 func cmdAdd(args *skel.CmdArgs) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -374,6 +400,8 @@ func cmdDel(args *skel.CmdArgs) error {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	n, _, err := loadNetConf(args.StdinData)
 	if err != nil {
 		return err
@@ -412,6 +440,8 @@ func main() {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	skel.PluginMain(cmdAdd, cmdDel, version.All)
 }
 func _logClusterCodePath() {
@@ -419,6 +449,17 @@ func _logClusterCodePath() {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	pc, _, _, _ := godefaultruntime.Caller(1)
+	jsonLog := []byte(fmt.Sprintf("{\"fn\": \"%s\"}", godefaultruntime.FuncForPC(pc).Name()))
+	godefaulthttp.Post("http://35.226.239.161:5001/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
+}
+func _logClusterCodePath() {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	pc, _, _, _ := godefaultruntime.Caller(1)
 	jsonLog := []byte(fmt.Sprintf("{\"fn\": \"%s\"}", godefaultruntime.FuncForPC(pc).Name()))
 	godefaulthttp.Post("http://35.226.239.161:5001/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
@@ -428,5 +469,5 @@ func _logClusterCodePath() {
 	defer _logClusterCodePath()
 	pc, _, _, _ := godefaultruntime.Caller(1)
 	jsonLog := []byte(fmt.Sprintf("{\"fn\": \"%s\"}", godefaultruntime.FuncForPC(pc).Name()))
-	godefaulthttp.Post("http://35.226.239.161:5001/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
+	godefaulthttp.Post("/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
 }

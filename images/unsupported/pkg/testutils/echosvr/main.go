@@ -10,6 +10,8 @@ func main() {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	listener, err := net.Listen("tcp", ":")
 	if err != nil {
 		panic(err)
@@ -28,6 +30,8 @@ func main() {
 	}
 }
 func handleConnection(conn net.Conn) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

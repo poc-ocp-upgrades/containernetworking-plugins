@@ -18,6 +18,8 @@ func ipNetEqual(a, b *net.IPNet) bool {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	aPrefix, aBits := a.Mask.Size()
 	bPrefix, bBits := b.Mask.Size()
 	if aPrefix != bPrefix || aBits != bBits {

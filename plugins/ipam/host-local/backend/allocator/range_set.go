@@ -11,10 +11,14 @@ func (s *RangeSet) Contains(addr net.IP) bool {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	r, _ := s.RangeFor(addr)
 	return r != nil
 }
 func (s *RangeSet) RangeFor(addr net.IP) (*Range, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -34,6 +38,8 @@ func (s *RangeSet) Overlaps(p1 *RangeSet) bool {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	for _, r := range *s {
 		for _, r1 := range *p1 {
 			if r.Overlaps(&r1) {
@@ -44,6 +50,8 @@ func (s *RangeSet) Overlaps(p1 *RangeSet) bool {
 	return false
 }
 func (s *RangeSet) Canonicalize() error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -75,6 +83,8 @@ func (s *RangeSet) Canonicalize() error {
 	return nil
 }
 func (s *RangeSet) String() string {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

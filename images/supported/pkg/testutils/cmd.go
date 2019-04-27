@@ -12,12 +12,16 @@ func envCleanup() {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	os.Unsetenv("CNI_COMMAND")
 	os.Unsetenv("CNI_PATH")
 	os.Unsetenv("CNI_NETNS")
 	os.Unsetenv("CNI_IFNAME")
 }
 func CmdAddWithResult(cniNetns, cniIfname string, conf []byte, f func() error) (types.Result, []byte, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -55,6 +59,8 @@ func CmdAddWithResult(cniNetns, cniIfname string, conf []byte, f func() error) (
 	return result, out, nil
 }
 func CmdDelWithResult(cniNetns, cniIfname string, f func() error) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

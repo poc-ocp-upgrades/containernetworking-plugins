@@ -13,6 +13,8 @@ func NewFileLock(lockPath string) (*FileLock, error) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	fi, err := os.Stat(lockPath)
 	if err != nil {
 		return nil, err
@@ -31,6 +33,8 @@ func (l *FileLock) Close() error {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return l.f.Close()
 }
 func (l *FileLock) Lock() error {
@@ -38,9 +42,13 @@ func (l *FileLock) Lock() error {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return l.f.Lock()
 }
 func (l *FileLock) Unlock() error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

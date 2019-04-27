@@ -19,6 +19,8 @@ func forwardPorts(config *PortMapConf, containerIP net.IP) error {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	isV6 := (containerIP.To4() == nil)
 	var ipt *iptables.IPTables
 	var err error
@@ -66,6 +68,8 @@ func genToplevelDnatChain() chain {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return chain{table: "nat", name: TopLevelDNATChainName, entryRules: [][]string{{"-m", "addrtype", "--dst-type", "LOCAL"}}, entryChains: []string{"PREROUTING", "OUTPUT"}}
 }
 func genDnatChain(netName, containerID string) chain {
@@ -73,9 +77,13 @@ func genDnatChain(netName, containerID string) chain {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return chain{table: "nat", name: formatChainName("DN-", netName, containerID), entryChains: []string{TopLevelDNATChainName}}
 }
 func fillDnatRules(c *chain, config *PortMapConf, containerIP net.IP) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -133,12 +141,16 @@ func genSetMarkChain(markBit int) chain {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	markValue := 1 << uint(markBit)
 	markDef := fmt.Sprintf("%#x/%#x", markValue, markValue)
 	ch := chain{table: "nat", name: SetMarkChainName, rules: [][]string{{"-m", "comment", "--comment", "CNI portfwd masquerade mark", "-j", "MARK", "--set-xmark", markDef}}}
 	return ch
 }
 func genMarkMasqChain(markBit int) chain {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -153,6 +165,8 @@ func enableLocalnetRouting(ifName string) error {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	routeLocalnetPath := "net.ipv4.conf." + ifName + ".route_localnet"
 	_, err := sysctl.Sysctl(routeLocalnetPath, "1")
 	return err
@@ -162,10 +176,14 @@ func genOldSnatChain(netName, containerID string) chain {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	name := formatChainName("SN-", netName, containerID)
 	return chain{table: "nat", name: name, entryChains: []string{OldTopLevelSNATChainName}}
 }
 func unforwardPorts(config *PortMapConf) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -192,6 +210,8 @@ func unforwardPorts(config *PortMapConf) error {
 	return nil
 }
 func maybeGetIptables(isV6 bool) *iptables.IPTables {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

@@ -14,6 +14,8 @@ func parseRouter(opts dhcp4.Options) net.IP {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	if opts, ok := opts[dhcp4.OptionRouter]; ok {
 		if len(opts) == 4 {
 			return net.IP(opts)
@@ -26,9 +28,13 @@ func classfulSubnet(sn net.IP) net.IPNet {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return net.IPNet{IP: sn, Mask: sn.DefaultMask()}
 }
 func parseRoutes(opts dhcp4.Options) []*types.Route {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -46,6 +52,8 @@ func parseRoutes(opts dhcp4.Options) []*types.Route {
 	return routes
 }
 func parseCIDRRoutes(opts dhcp4.Options) []*types.Route {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -79,6 +87,8 @@ func parseSubnetMask(opts dhcp4.Options) net.IPMask {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	mask, ok := opts[dhcp4.OptionSubnetMask]
 	if !ok {
 		return nil
@@ -86,6 +96,8 @@ func parseSubnetMask(opts dhcp4.Options) net.IPMask {
 	return net.IPMask(mask)
 }
 func parseDuration(opts dhcp4.Options, code dhcp4.OptionCode, optName string) (time.Duration, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -105,6 +117,8 @@ func parseLeaseTime(opts dhcp4.Options) (time.Duration, error) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return parseDuration(opts, dhcp4.OptionIPAddressLeaseTime, "LeaseTime")
 }
 func parseRenewalTime(opts dhcp4.Options) (time.Duration, error) {
@@ -112,9 +126,13 @@ func parseRenewalTime(opts dhcp4.Options) (time.Duration, error) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return parseDuration(opts, dhcp4.OptionRenewalTimeValue, "RenewalTime")
 }
 func parseRebindingTime(opts dhcp4.Options) (time.Duration, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

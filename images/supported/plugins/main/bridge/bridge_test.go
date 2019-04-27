@@ -38,6 +38,8 @@ func (tc testCase) netConf() *NetConf {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return &NetConf{NetConf: types.NetConf{CNIVersion: tc.cniVersion, Name: "testConfig", Type: "bridge"}, BrName: BRNAME, IsGW: tc.isGW, IPMasq: false, MTU: 5000}
 }
 
@@ -78,6 +80,8 @@ func (tc testCase) netConfJSON() string {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	conf := fmt.Sprintf(netConfStr, tc.cniVersion, BRNAME)
 	if tc.subnet != "" || tc.ranges != nil {
 		conf += ipamStartStr
@@ -96,6 +100,8 @@ func (tc testCase) subnetConfig() string {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	conf := fmt.Sprintf(subnetConfStr, tc.subnet)
 	if tc.gateway != "" {
 		conf += fmt.Sprintf(gatewayConfStr, tc.gateway)
@@ -103,6 +109,8 @@ func (tc testCase) subnetConfig() string {
 	return conf
 }
 func (tc testCase) rangesConfig() string {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -125,10 +133,14 @@ func (tc testCase) createCmdArgs(targetNS ns.NetNS) *skel.CmdArgs {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	conf := tc.netConfJSON()
 	return &skel.CmdArgs{ContainerID: "dummy", Netns: targetNS.Path(), IfName: IFNAME, StdinData: []byte(conf)}
 }
 func (tc testCase) expectedCIDRs() ([]*net.IPNet, []*net.IPNet) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -156,6 +168,8 @@ func delBridgeAddrs(testNS ns.NetNS) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	err := testNS.Do(func(ns.NetNS) error {
 		defer GinkgoRecover()
 		br, err := netlink.LinkByName(BRNAME)
@@ -177,6 +191,8 @@ func ipVersion(ip net.IP) string {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	if ip.To4() != nil {
 		return "4"
 	}
@@ -190,6 +206,8 @@ type cmdAddDelTester interface {
 }
 
 func testerByVersion(version string) cmdAddDelTester {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -214,10 +232,14 @@ func (tester *testerV03x) setNS(testNS ns.NetNS, targetNS ns.NetNS) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	tester.testNS = testNS
 	tester.targetNS = targetNS
 }
 func (tester *testerV03x) cmdAddTest(tc testCase) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -327,6 +349,8 @@ func (tester *testerV03x) cmdDelTest(tc testCase) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	err := tester.testNS.Do(func(ns.NetNS) error {
 		defer GinkgoRecover()
 		err := testutils.CmdDelWithResult(tester.targetNS.Path(), IFNAME, func() error {
@@ -365,10 +389,14 @@ func (tester *testerV01xOr02x) setNS(testNS ns.NetNS, targetNS ns.NetNS) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	tester.testNS = testNS
 	tester.targetNS = targetNS
 }
 func (tester *testerV01xOr02x) cmdAddTest(tc testCase) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -447,6 +475,8 @@ func (tester *testerV01xOr02x) cmdDelTest(tc testCase) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	err := tester.testNS.Do(func(ns.NetNS) error {
 		defer GinkgoRecover()
 		err := testutils.CmdDelWithResult(tester.targetNS.Path(), IFNAME, func() error {
@@ -466,6 +496,8 @@ func (tester *testerV01xOr02x) cmdDelTest(tc testCase) {
 	Expect(err).NotTo(HaveOccurred())
 }
 func cmdAddDelTest(testNS ns.NetNS, tc testCase) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

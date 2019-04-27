@@ -49,6 +49,8 @@ func LoadIPAMConfig(bytes []byte, envArgs string) (*IPAMConfig, string, error) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	n := Net{}
 	if err := json.Unmarshal(bytes, &n); err != nil {
 		return nil, "", err

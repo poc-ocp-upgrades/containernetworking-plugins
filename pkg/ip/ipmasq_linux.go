@@ -11,6 +11,8 @@ func SetupIPMasq(ipn *net.IPNet, chain string, comment string) error {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	isV6 := ipn.IP.To4() == nil
 	var ipt *iptables.IPTables
 	var err error
@@ -50,6 +52,8 @@ func SetupIPMasq(ipn *net.IPNet, chain string, comment string) error {
 	return ipt.AppendUnique("nat", "POSTROUTING", "-s", ipn.String(), "-j", chain, "-m", "comment", "--comment", comment)
 }
 func TeardownIPMasq(ipn *net.IPNet, chain string, comment string) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

@@ -20,6 +20,8 @@ func makeVethPair(name, peer string, mtu int) (netlink.Link, error) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	veth := &netlink.Veth{LinkAttrs: netlink.LinkAttrs{Name: name, Flags: net.FlagUp, MTU: mtu}, PeerName: peer}
 	if err := netlink.LinkAdd(veth); err != nil {
 		return nil, err
@@ -36,12 +38,16 @@ func peerExists(name string) bool {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	if _, err := netlink.LinkByName(name); err != nil {
 		return false
 	}
 	return true
 }
 func makeVeth(name string, mtu int) (peerName string, veth netlink.Link, err error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -74,6 +80,8 @@ func RandomVethName() (string, error) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	entropy := make([]byte, 4)
 	_, err := rand.Reader.Read(entropy)
 	if err != nil {
@@ -82,6 +90,8 @@ func RandomVethName() (string, error) {
 	return fmt.Sprintf("veth%x", entropy), nil
 }
 func RenameLink(curName, newName string) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -97,10 +107,14 @@ func ifaceFromNetlinkLink(l netlink.Link) net.Interface {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	a := l.Attrs()
 	return net.Interface{Index: a.Index, MTU: a.MTU, Name: a.Name, HardwareAddr: a.HardwareAddr, Flags: a.Flags}
 }
 func SetupVeth(contVethName string, mtu int, hostNS ns.NetNS) (net.Interface, net.Interface, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -139,6 +153,8 @@ func DelLinkByName(ifName string) error {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	iface, err := netlink.LinkByName(ifName)
 	if err != nil {
 		if err.Error() == "Link not found" {
@@ -152,6 +168,8 @@ func DelLinkByName(ifName string) error {
 	return nil
 }
 func DelLinkByNameAddr(ifName string) ([]*net.IPNet, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -179,6 +197,8 @@ func DelLinkByNameAddr(ifName string) ([]*net.IPNet, error) {
 	return out, nil
 }
 func SetHWAddrByIP(ifName string, ip4 net.IP, ip6 net.IP) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

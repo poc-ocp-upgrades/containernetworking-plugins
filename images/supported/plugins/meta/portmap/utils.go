@@ -16,6 +16,8 @@ func fmtIpPort(ip net.IP, port int) string {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	if ip.To4() == nil {
 		return fmt.Sprintf("[%s]:%d", ip.String(), port)
 	}
@@ -26,12 +28,16 @@ func localhostIP(isV6 bool) string {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	if isV6 {
 		return "::1"
 	}
 	return "127.0.0.1"
 }
 func getRoutableHostIF(containerIP net.IP) string {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -54,11 +60,15 @@ func formatChainName(prefix, name, id string) string {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	chainBytes := sha512.Sum512([]byte(name + id))
 	chain := fmt.Sprintf("CNI-%s%x", prefix, chainBytes)
 	return chain[:maxChainNameLength]
 }
 func groupByProto(entries []PortMapEntry) map[string][]int {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -82,6 +92,8 @@ func splitPortList(l []int) []string {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	out := []string{}
 	acc := []string{}
 	for _, i := range l {
@@ -97,6 +109,8 @@ func splitPortList(l []int) []string {
 	return out
 }
 func trimComment(val string) string {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

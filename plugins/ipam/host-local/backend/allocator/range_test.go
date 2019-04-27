@@ -90,6 +90,8 @@ func mustSubnet(s string) types.IPNet {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	n, err := types.ParseCIDR(s)
 	if err != nil {
 		Fail(err.Error())

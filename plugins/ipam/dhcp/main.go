@@ -20,6 +20,8 @@ func main() {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	if len(os.Args) > 1 && os.Args[1] == "daemon" {
 		var pidfilePath string
 		var hostPrefix string
@@ -40,6 +42,8 @@ func cmdAdd(args *skel.CmdArgs) error {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	versionDecoder := &version.ConfigDecoder{}
 	confVersion, err := versionDecoder.Decode(args.StdinData)
 	if err != nil {
@@ -56,6 +60,8 @@ func cmdDel(args *skel.CmdArgs) error {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	result := struct{}{}
 	if err := rpcCall("DHCP.Release", args, &result); err != nil {
 		return fmt.Errorf("error dialing DHCP daemon: %v", err)
@@ -63,6 +69,8 @@ func cmdDel(args *skel.CmdArgs) error {
 	return nil
 }
 func rpcCall(method string, args *skel.CmdArgs, result interface{}) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

@@ -11,6 +11,8 @@ func EnableIP4Forward() error {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return echo1("/proc/sys/net/ipv4/ip_forward")
 }
 func EnableIP6Forward() error {
@@ -18,9 +20,13 @@ func EnableIP6Forward() error {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return echo1("/proc/sys/net/ipv6/conf/all/forwarding")
 }
 func EnableForward(ips []*current.IPConfig) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -43,6 +49,8 @@ func EnableForward(ips []*current.IPConfig) error {
 	return nil
 }
 func echo1(f string) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

@@ -19,6 +19,8 @@ func ConfigureIface(ifName string, res *current.Result) error {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	if len(res.Interfaces) == 0 {
 		return fmt.Errorf("no interfaces to configure")
 	}

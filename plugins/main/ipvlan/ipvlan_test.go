@@ -21,6 +21,8 @@ func ipvlanAddDelTest(conf, IFNAME string, originalNS ns.NetNS) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	targetNs, err := ns.NewNS()
 	Expect(err).NotTo(HaveOccurred())
 	defer targetNs.Close()

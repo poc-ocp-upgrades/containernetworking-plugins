@@ -40,6 +40,8 @@ func cmdAdd(args *skel.CmdArgs) error {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	netConf, err := parseConfig(args.StdinData, args.IfName)
 	if err != nil {
 		return fmt.Errorf("failed to parse config: %v", err)
@@ -68,6 +70,8 @@ func cmdDel(args *skel.CmdArgs) error {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	netConf, err := parseConfig(args.StdinData, args.IfName)
 	if err != nil {
 		return fmt.Errorf("failed to parse config: %v", err)
@@ -83,9 +87,13 @@ func main() {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	skel.PluginMain(cmdAdd, cmdDel, version.PluginSupports("", "0.1.0", "0.2.0", "0.3.0", version.Current()))
 }
 func parseConfig(stdin []byte, ifName string) (*PortMapConf, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

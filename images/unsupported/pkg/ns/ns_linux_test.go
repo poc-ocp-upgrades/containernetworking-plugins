@@ -17,6 +17,8 @@ func getInodeCurNetNS() (uint64, error) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	curNS, err := ns.GetCurrentNS()
 	if err != nil {
 		return 0, err
@@ -29,9 +31,13 @@ func getInodeNS(netns ns.NetNS) (uint64, error) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return getInodeFd(int(netns.Fd()))
 }
 func getInode(path string) (uint64, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -44,6 +50,8 @@ func getInode(path string) (uint64, error) {
 	return getInodeFd(int(file.Fd()))
 }
 func getInodeFd(fd int) (uint64, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -207,6 +215,8 @@ var _ = Describe("Linux namespace operations", func() {
 })
 
 func allNetNSInCurrentProcess() []string {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

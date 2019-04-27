@@ -17,6 +17,8 @@ func getHwAddr(linkname string) string {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	veth, err := netlink.LinkByName(linkname)
 	Expect(err).NotTo(HaveOccurred())
 	return fmt.Sprintf("%s", veth.Attrs().HardwareAddr)

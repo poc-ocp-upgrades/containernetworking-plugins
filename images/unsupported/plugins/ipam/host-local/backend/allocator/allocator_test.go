@@ -22,6 +22,8 @@ func mkalloc() IPAllocator {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	p := RangeSet{Range{Subnet: mustSubnet("192.168.1.0/29")}}
 	p.Canonicalize()
 	store := fakestore.NewFakeStore(map[string]string{}, map[string]net.IP{})
@@ -29,6 +31,8 @@ func mkalloc() IPAllocator {
 	return alloc
 }
 func (t AllocatorTestCase) run(idx int) (*current.IPConfig, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -164,6 +168,8 @@ var _ = Describe("host-local ip allocator", func() {
 })
 
 func (i *RangeIter) nextip() net.IP {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

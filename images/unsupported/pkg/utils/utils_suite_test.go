@@ -11,6 +11,8 @@ func TestUtils(t *testing.T) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	RegisterFailHandler(Fail)
 	RunSpecs(t, "Utils Suite")
 }

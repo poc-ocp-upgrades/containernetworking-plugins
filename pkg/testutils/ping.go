@@ -13,6 +13,8 @@ func Ping(saddr, daddr string, isV6 bool, timeoutSec int) error {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	args := []string{"-c", "1", "-W", strconv.Itoa(timeoutSec), "-I", saddr, daddr}
 	bin := "ping"
 	if isV6 {

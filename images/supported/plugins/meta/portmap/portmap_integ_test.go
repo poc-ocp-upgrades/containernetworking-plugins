@@ -139,6 +139,8 @@ func testEchoServer(address string, port int, netns string) bool {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	message := "Aliquid melius quam pessimum optimum non est."
 	bin, err := exec.LookPath("nc")
 	Expect(err).NotTo(HaveOccurred())
@@ -164,6 +166,8 @@ func testEchoServer(address string, port int, netns string) bool {
 	return true
 }
 func getLocalIP() string {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

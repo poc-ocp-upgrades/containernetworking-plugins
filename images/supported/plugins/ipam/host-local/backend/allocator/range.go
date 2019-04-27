@@ -12,6 +12,8 @@ func (r *Range) Canonicalize() error {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	if err := canonicalizeIP(&r.Subnet.IP); err != nil {
 		return err
 	}
@@ -60,6 +62,8 @@ func (r *Range) Contains(addr net.IP) bool {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	if err := canonicalizeIP(&addr); err != nil {
 		return false
 	}
@@ -87,6 +91,8 @@ func (r *Range) Overlaps(r1 *Range) bool {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	if len(r.RangeStart) != len(r1.RangeStart) {
 		return false
 	}
@@ -97,9 +103,13 @@ func (r *Range) String() string {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return fmt.Sprintf("%s-%s", r.RangeStart.String(), r.RangeEnd.String())
 }
 func canonicalizeIP(ip *net.IP) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -114,6 +124,8 @@ func canonicalizeIP(ip *net.IP) error {
 	return fmt.Errorf("IP %s not v4 nor v6", *ip)
 }
 func lastIP(subnet types.IPNet) net.IP {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

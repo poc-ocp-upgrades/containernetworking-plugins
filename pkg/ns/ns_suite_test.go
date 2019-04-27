@@ -14,6 +14,8 @@ func TestNs(t *testing.T) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	rand.Seed(config.GinkgoConfig.RandomSeed)
 	runtime.LockOSThread()
 	RegisterFailHandler(Fail)

@@ -48,6 +48,8 @@ func parse(contents string) (*types.DNS, error) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	f, err := ioutil.TempFile("", "host_local_resolv")
 	defer f.Close()
 	defer os.Remove(f.Name())

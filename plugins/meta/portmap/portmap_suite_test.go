@@ -21,6 +21,8 @@ func TestPortmap(t *testing.T) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	rand.Seed(config.GinkgoConfig.RandomSeed)
 	RegisterFailHandler(Fail)
 	RunSpecs(t, "portmap Suite")
@@ -44,12 +46,16 @@ func startInNetNS(binPath string, netNS ns.NetNS) (*gexec.Session, error) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	baseName := filepath.Base(netNS.Path())
 	cmd := exec.Command("ip", "netns", "exec", baseName, binPath)
 	session, err := gexec.Start(cmd, GinkgoWriter, GinkgoWriter)
 	return session, err
 }
 func StartEchoServerInNamespace(netNS ns.NetNS) (int, *gexec.Session, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

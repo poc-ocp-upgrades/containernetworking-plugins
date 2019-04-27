@@ -10,6 +10,8 @@ func AddRoute(ipn *net.IPNet, gw net.IP, dev netlink.Link) error {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return netlink.RouteAdd(&netlink.Route{LinkIndex: dev.Attrs().Index, Scope: netlink.SCOPE_UNIVERSE, Dst: ipn, Gw: gw})
 }
 func AddHostRoute(ipn *net.IPNet, gw net.IP, dev netlink.Link) error {
@@ -17,9 +19,13 @@ func AddHostRoute(ipn *net.IPNet, gw net.IP, dev netlink.Link) error {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return netlink.RouteAdd(&netlink.Route{LinkIndex: dev.Attrs().Index, Scope: netlink.SCOPE_HOST, Dst: ipn, Gw: gw})
 }
 func AddDefaultRoute(gw net.IP, dev netlink.Link) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

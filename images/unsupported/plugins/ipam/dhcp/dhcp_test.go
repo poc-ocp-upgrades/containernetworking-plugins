@@ -25,6 +25,8 @@ func dhcpServerStart(netns ns.NetNS, leaseIP, serverIP net.IP, stopCh <-chan boo
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	lp := memorypool.MemoryPool{}
 	err := lp.AddLease(leasepool.Lease{IP: dhcp4.IPAdd(net.IPv4(192, 168, 1, 5), 0)})
 	if err != nil {

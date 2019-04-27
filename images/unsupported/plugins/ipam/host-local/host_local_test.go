@@ -364,6 +364,8 @@ func getTmpDir() (string, error) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	tmpDir, err := ioutil.TempDir("", "host_local_artifacts")
 	if err == nil {
 		tmpDir = filepath.ToSlash(tmpDir)
@@ -371,6 +373,8 @@ func getTmpDir() (string, error) {
 	return tmpDir, err
 }
 func mustCIDR(s string) net.IPNet {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
