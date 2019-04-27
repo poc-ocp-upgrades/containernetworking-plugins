@@ -4,7 +4,6 @@ import (
 	"io/ioutil"
 	"os"
 	"time"
-
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )
@@ -17,11 +16,7 @@ var _ = Describe("IpforwardLinux", func() {
 		Expect(err).NotTo(HaveOccurred())
 		statBefore, err := file.Stat()
 		Expect(err).NotTo(HaveOccurred())
-
-		// take a duration here, otherwise next file modification operation time
-		// will be same as previous one.
 		time.Sleep(100 * time.Millisecond)
-
 		err = echo1(file.Name())
 		Expect(err).NotTo(HaveOccurred())
 		statAfter, err := file.Stat()

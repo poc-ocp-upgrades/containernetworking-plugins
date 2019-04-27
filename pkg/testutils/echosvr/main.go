@@ -1,9 +1,3 @@
-// Echosvr is a simple TCP echo server
-//
-// It prints its listen address on stdout
-//    127.0.0.1:xxxxx
-//  A test should wait for this line, parse it
-//  and may then attempt to connect.
 package main
 
 import (
@@ -12,6 +6,10 @@ import (
 )
 
 func main() {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	listener, err := net.Listen("tcp", ":")
 	if err != nil {
 		panic(err)
@@ -29,8 +27,11 @@ func main() {
 		go handleConnection(conn)
 	}
 }
-
 func handleConnection(conn net.Conn) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	buf := make([]byte, 512)
 	nBytesRead, _ := conn.Read(buf)
 	conn.Write(buf[0:nBytesRead])
